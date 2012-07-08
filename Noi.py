@@ -48,6 +48,31 @@ METHODS = [
     {
         'name': 'current', 'method': 'queueCurrent',
         'help': 'Show the currently playing song.', 'formatter': 'song'
+    },
+    {
+        'name': 'next', 'method': 'queueNext', 'formatter': 'song',
+        'help': 'Starts playing next song on playlist.'
+    },
+    {
+        'name': 'prev', 'method': 'queuePrev', 'formatter': 'song',
+        'help': 'Starts playing previous song.'
+    },
+    {
+        'name': 'stop', 'method': 'queueStop', 'formatter': 'song',
+        'help': 'Stops playing'
+    },
+    {
+        'name': 'play', 'method': 'queuePlay', 'params': ['position'],
+        'defaults': ['position'], 'formatter': 'song',
+        'help': 'Starts playing the song-number specified. if none is specified, plays number 1.'
+    },
+    {
+        'name': 'pause', 'method': 'queuePause', 'formatter': 'song',
+        'help': 'Pauses playing'
+    },
+    {
+        'name': 'toggle', 'method': 'queueToggle', 'formatter': 'song',
+        'help': 'Toggles between play and pause. If stopped starts playing. Does not support start playing at song number (use play).'
     }
 ]
 METHODS.sort(key=lambda x: x['name'])
@@ -152,7 +177,6 @@ if __name__ == '__main__':
     import sys, codecs
     # Force UTF8 encoding
     sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
-    sys.stderr = codecs.getwriter("utf-8")(sys.stderr.detach())
     sys.stdin = codecs.getwriter("utf-8")(sys.stdin.detach())
 
     parser = get_argument_parser()
