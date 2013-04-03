@@ -1,9 +1,4 @@
 *.log
 *.aux
-*.pyc
 *~
 *.swp
-bin
-lib
-build
-include
