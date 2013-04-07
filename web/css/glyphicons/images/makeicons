@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for COLOR in FF99CC FF66CC 228EF1; do
+    convert glyphicons-original.png +level-colors "#${COLOR},#FFFFFF" glyphicons.png
+    convert glyphicons.png -fuzz 20% -fill "#00FFFF" -draw 'color 0,0 replace' -transparent "#00FFFF" glyphicons-${COLOR}.png
+done
+rm glyphicons.png
+convert glyphicons-original.png -fuzz 20% -fill "#00FFFF" -draw 'color 0,0 replace' -transparent "#00FFFF" glyphicons-000000.png
+convert glyphicons-original.png -negate -fuzz 20% -fill "#00FFFF" -draw 'color 0,0 replace' -transparent "#00FFFF" glyphicons-FFFFFF.png

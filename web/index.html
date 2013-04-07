@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>Melody Web Interface</title>
+        <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script><style type="text/css"></style>
+        <script type="text/javascript" src="js/jquery-ui-1.10.2.custom.min.js"></script>
+        <script type="text/javascript" src="js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="js/socket.io.js"></script>
+        <script type="text/javascript" src="js/Melody.js"></script>
+        <link rel="stylesheet" href="css/PinkiePie/jquery-ui-1.10.2.custom.min.css">
+        <link rel="stylesheet" href="css/glyphicons/glyphicons.css">
+        <script type="text/javascript">
+            $(function() {
+                $.subscribe('piano-*', function(evt, data) {
+                    console.log(data);
+                });
+                Melody.start();
+            });
+        </script>
+        <style type="text/css">
+            .container {
+                width: 100%;
+                height: 100%;
+            }
+            .ui-widget-header {
+                font-size: 2em;
+                padding: .1em;
+                text-align: center;
+            }
+            .ui-widget-content {
+                padding: 1em;
+            }
+            .coverart {
+                width:260px;
+                padding:5px;
+                float: left;
+            }
+            .coverart img{
+                width: 250px;
+                height: 250px;
+            }
+            .metadata {
+                margin: 0px;
+                margin-left: 260px;
+            }
+            .inline {
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body class=" hasGoogleVoiceExt">
+        <div class="container ui-widget ui-corner-all">
+            <div class="ui-widget-header ui-corner-all">
+                Melody
+            </div>
+            <div class="widget ui-widget-content ui-corner-all piano-update piano-key-111 piano-attr-id ui-helper-clearfix">
+                <div class="coverart">
+                    <img class="piano-update piano-key-118 piano-attr-src" >
+                </div>
+                <div class="metadata">
+                    <div>&nbsp;</div>
+                    <div><strong><span class="piano-status">Playing</span>:</strong> <span class="piano-station">Loading...</span></div>
+                    <div>&nbsp;</div>
+                    <div><strong>Title:</strong> <span class="piano-update piano-key-114">Loading...</span></div>
+                    <div><strong>Artist:</strong> <span class="piano-update piano-key-113">Loading...</span></div>
+                    <div><strong>Album:</strong> <span class="piano-update piano-key-112">Loading...</span></div>
+                    <div><strong>From Station:</strong> <span class="piano-update piano-key-115">Loading...</span></div>
+                    <div>&nbsp;</div>
+                    <div><a class="piano-update piano-key-117 piano-attr-href" href="#">View on Pandora.com</a></div>
+                    <div>&nbsp;</div>
+                    <div class="piano-controls" style="">
+                        <div class="piano-play ui-state-default ui-corner-all inline" title="Play/Pause">
+                            <span class="icon icon-play">
+                        </span></div>
+                        <div class="piano-stop ui-state-default ui-corner-all inline" title="Stop">
+                            <span class="icon icon-stop">
+                        </span></div>
+                        <div class="piano-skip ui-state-default ui-corner-all inline" title="Skip">
+                            <span class="icon icon-fast-forward">
+                        </span></div>
+                        <div class="piano-rate-down ui-state-default ui-corner-all inline" title="Rate Song Down">
+                            <span class="icon icon-thumbs-down">
+                        </span></div>
+                        <div class="piano-rate-up ui-state-default ui-corner-all inline" title="Rate Song Up">
+                            <span class="icon icon-thumbs-up">
+                        </span></div>
+                        <div class="piano-ban ui-state-default ui-corner-all inline" title="Ban Song for 30 Days">
+                            <span class="icon icon-ban">
+                        </span></div>
+                        <div class="piano-artist-seed ui-state-default ui-corner-all inline" title="Artist Seed">
+                            <span class="icon icon-user">
+                        </span></div>
+                        <div class="piano-song-seed ui-state-default ui-corner-all inline" title="Song Seed">
+                            <span class="icon icon-music">
+                        </span></div>
+                     </div>
+                 </div>
+            </div>
+            <div class="ui-widget-content ui-corner-all piano-controls" style="">
+               <div class="inline">
+                    <strong>Station:</strong>
+                    <select name="piano-stations" class="piano-stations"></select>
+                    <button class="piano-set-station">Select</button>
+                </div>
+            </div>
+            <div class="ui-widget-content ui-color-all piano-login-container" style="display: none;">
+                <div class="piano-login-error ui-state-error" style="display: none;"><div class="ui-icon ui-icon-alert inline"></div>Invalid Username or Password</div>
+                <div>Username: <input type="text" class="piano-username"></div>
+                <div>Password: <input type="password" class="piano-password"></div>
+                <div><button class="piano-login" onclick="Melody.login()"><div class="ui-icon ui-icon-circle-check inline"></div> Login</button></div>
+            </div>
+        </div>
+</body>
+</html>
