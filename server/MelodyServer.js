@@ -132,7 +132,6 @@ function parseResponse(lines, nonce) {
         }
         if (isData && line.code < 200) { prior = line.code; }
     });
-    console.log(lines);
 
     if (isError) {
         result = parseError(lines, nonce);
@@ -143,7 +142,6 @@ function parseResponse(lines, nonce) {
     } else {
         result = parseSimple(lines, nonce);
     }
-    console.log(result);
     return result;
 }
 
@@ -160,7 +158,6 @@ io.on('connection', function(socket) {
     socket.on('command', function(cmd) {
         var lines = '', piano;
         piano = net.connect({port: 4445}, function() {
-            console.log(cmd.text);
             piano.end(cmd.text + '\n');
         }).on('data', function(data) {
             lines += data;
